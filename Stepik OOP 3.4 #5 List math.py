@@ -1,19 +1,7 @@
 class ListMath:
     def __init__(self, lst=None):
-        self.lst_math = lst[:] if lst and type(lst) == list else[]
-        ListMath.clear_trash(self.lst_math)
-
-    @classmethod
-    def clear_trash(cls, lst):
-        indx_lst = []
-        j = -1
-        for i in lst:
-            j += 1
-            if not isinstance(i, (int, float)) or type(i) == bool:
-                indx_lst.append(j)
-        for k in indx_lst[::-1]:
-            lst.pop(k)
-        return lst
+        self.lst_math = [x for x in lst if type(x) in (int, float)] if \
+            type(lst) == list else []
 
     def __add__(self, other):
         copy = self.lst_math.copy()
